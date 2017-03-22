@@ -9,12 +9,14 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -67,15 +69,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         cb_contactos = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        tf_asunto = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
+        ta_cuerpo = new javax.swing.JTextArea();
         jButton17 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         jd_crear_cuenta = new javax.swing.JDialog();
         jlb_foto = new javax.swing.JLabel();
         tf_nombre = new javax.swing.JTextField();
@@ -93,6 +92,7 @@ public class Principal extends javax.swing.JFrame {
         dc_fecha_nacimiento = new com.toedter.calendar.JDateChooser();
         jLabel20 = new javax.swing.JLabel();
         pf_contraseña = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
         jd_config = new javax.swing.JDialog();
         jlb_foto_config = new javax.swing.JLabel();
         tf_nombre_config = new javax.swing.JTextField();
@@ -227,25 +227,32 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel10.setText("Para");
 
-        cb_contactos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel11.setText("Asunto");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jButton12.setText("jButton12");
-
-        jButton13.setText("jButton12");
-
-        jButton14.setText("jButton12");
-
-        jButton15.setText("jButton12");
-
-        jButton16.setText("jButton12");
+        ta_cuerpo.setColumns(20);
+        ta_cuerpo.setRows(5);
+        jScrollPane1.setViewportView(ta_cuerpo);
 
         jButton17.setText("Enviar");
+        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton17MouseClicked(evt);
+            }
+        });
+
+        jButton11.setText("Actualizar lista");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
+
+        jButton12.setText("Adjuntar archivo");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_redactarLayout = new javax.swing.GroupLayout(jd_redactar.getContentPane());
         jd_redactar.getContentPane().setLayout(jd_redactarLayout);
@@ -255,30 +262,23 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jd_redactarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_redactarLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE))
                     .addGroup(jd_redactarLayout.createSequentialGroup()
-                        .addGap(126, 126, 126)
+                        .addContainerGap()
+                        .addComponent(jButton12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton17))
+                    .addGroup(jd_redactarLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
                         .addGroup(jd_redactarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11)
                             .addComponent(jLabel10))
                         .addGap(18, 18, 18)
-                        .addGroup(jd_redactarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cb_contactos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 68, Short.MAX_VALUE))
-                    .addGroup(jd_redactarLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jd_redactarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_asunto)
+                            .addComponent(cb_contactos, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton17)))
+                        .addComponent(jButton11)))
                 .addContainerGap())
         );
         jd_redactarLayout.setVerticalGroup(
@@ -287,21 +287,18 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jd_redactarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(cb_contactos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_contactos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton11))
                 .addGap(18, 18, 18)
                 .addGroup(jd_redactarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_asunto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jd_redactarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton12)
-                    .addComponent(jButton13)
-                    .addComponent(jButton14)
-                    .addComponent(jButton15)
-                    .addComponent(jButton16)
-                    .addComponent(jButton17))
+                    .addComponent(jButton17)
+                    .addComponent(jButton12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -311,7 +308,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel13.setText("Nombre");
 
-        jLabel14.setText("Correo");
+        jLabel14.setText("Usuario");
 
         jLabel15.setText("Telefono");
 
@@ -339,6 +336,9 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel20.setText("Contraseña");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("@minigmail.edu");
+
         javax.swing.GroupLayout jd_crear_cuentaLayout = new javax.swing.GroupLayout(jd_crear_cuenta.getContentPane());
         jd_crear_cuenta.getContentPane().setLayout(jd_crear_cuentaLayout);
         jd_crear_cuentaLayout.setHorizontalGroup(
@@ -348,37 +348,37 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crear_cuentaLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jd_crear_cuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jd_crear_cuentaLayout.createSequentialGroup()
                         .addGroup(jd_crear_cuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(jd_crear_cuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tf_correo)
                             .addComponent(tf_telefono)
-                            .addComponent(dc_fecha_nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(dc_fecha_nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cb_genero, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pf_contraseña))
+                            .addComponent(pf_contraseña)
+                            .addGroup(jd_crear_cuentaLayout.createSequentialGroup()
+                                .addComponent(tf_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3))
+                            .addComponent(tf_nombre))
                         .addGap(110, 110, 110))
                     .addGroup(jd_crear_cuentaLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
+                        .addComponent(jlb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jd_crear_cuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jd_crear_cuentaLayout.createSequentialGroup()
-                                .addComponent(jlb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jd_crear_cuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jd_crear_cuentaLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton18))
-                                    .addGroup(jd_crear_cuentaLayout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(jLabel18))))
-                            .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton18))
+                            .addGroup(jd_crear_cuentaLayout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel18)))
                         .addGap(95, 95, 95))))
         );
         jd_crear_cuentaLayout.setVerticalGroup(
@@ -398,7 +398,9 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jd_crear_cuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
-                    .addComponent(tf_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_crear_cuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tf_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)))
                 .addGap(18, 18, 18)
                 .addGroup(jd_crear_cuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20)
@@ -682,6 +684,24 @@ public class Principal extends javax.swing.JFrame {
         jp_principal.add(p1, BorderLayout.CENTER);
         jp_principal.revalidate();
         jp_principal.repaint();
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        panel_recibidos pr = new panel_recibidos();
+        pr.traerTable().setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Clase", "UV"
+                }
+        ));
+        int pos = 0;
+        for (Correo_E t : ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getCorreos_E()) {
+            if (ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getCorreos_E().get(pos).getBandeja().equals("Recibidos")) {
+                Object row[] = {t.getAsunto(), t.getRemitente()};
+                DefaultTableModel m = (DefaultTableModel) pr.traerTable().getModel();
+                m.addRow(row);
+                pr.traerTable().setModel(m);
+            }
+        }
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -748,6 +768,11 @@ public class Principal extends javax.swing.JFrame {
         jd_redactar.setLocationRelativeTo(this);//Ubicar la ventana en una posicion
         jd_redactar.setResizable(false);//No se puede modificar el tamaño
         jd_redactar.setVisible(true);
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        Correo_E c = new Correo_E(tf_asunto.getText(), ta_cuerpo.getText(), "Borradores", null, null);
+        ap.getListaCorreos().get(cb_correos.getSelectedIndex()).setCorreo_E(c);
+        ap.escribirArchivo();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
@@ -759,7 +784,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton20MouseClicked
 
     private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
-        Correo c = new Correo(tf_nombre.getText(), tf_correo.getText(), pf_contraseña.getText(), tf_telefono.getText(),
+        Correo c = new Correo(tf_nombre.getText(), tf_correo.getText() + "@minigmail.edu", pf_contraseña.getText(), tf_telefono.getText(),
                 (String) cb_genero.getSelectedItem(), dc_fecha_nacimiento.getDate(), jlb_foto.getIcon());
         adminCorreo ap = new adminCorreo("./correos.cbm");
         ap.cargarArchivo();
@@ -859,6 +884,51 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton10MouseClicked
 
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(ap.getListaCorreos().toArray());
+        cb_contactos.setModel(modelo);
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        JFileChooser fc = new JFileChooser();
+        int op = fc.showOpenDialog(this);
+        if (op == JFileChooser.APPROVE_OPTION) {
+            adminCorreo ap = new adminCorreo("./correos.cbm");
+            ap.cargarArchivo();
+            int tam = ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getCorreos_E().size() - 1;
+            ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getCorreos_E().get(tam).setArchivo(fc.getSelectedFile());
+            JOptionPane.showMessageDialog(this, "Se adjunto el archivo exitosamente");
+        }
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
+        /*
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        Correo_E c = new Correo_E(tf_asunto.getText(), ta_cuerpo.getText(), "Borradores", ap.getListaCorreos().get(cb_contactos.getSelectedIndex()));
+        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).setCorreo_E(c);
+        ap.escribirArchivo();
+         */
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        int tam = ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).getCorreos_E().size() - 1;
+        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).getCorreos_E().get(tam).setAsunto(tf_asunto.getText());
+        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).getCorreos_E().get(tam).setBandeja("Enviados");
+        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).getCorreos_E().get(tam).setCuerpo(ta_cuerpo.getText());
+        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).getCorreos_E().get(tam).setDestinatario((Correo) cb_contactos.getSelectedItem());
+        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).getCorreos_E().get(tam).setRemitente((Correo) cb_correos.getSelectedItem());
+        //asignar en bandeja de entrada de el destinatario
+        Correo_E c = new Correo_E(tf_asunto.getText(), ta_cuerpo.getText(), "Recibidos", ap.getListaCorreos().
+                get(cb_contactos.getSelectedIndex()), ap.getListaCorreos().get(cb_correos.getSelectedIndex()));
+        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).setCorreo_E(c);
+        JOptionPane.showMessageDialog(this, "Se ha enviado el correo");
+        tf_asunto.setText("");
+        ta_cuerpo.setText("");
+        cb_contactos.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton17MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -911,11 +981,8 @@ public class Principal extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dc_fecha_nacimiento_config;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
@@ -951,9 +1018,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JDialog jd_config;
     private javax.swing.JDialog jd_crear_cuenta;
     private javax.swing.JDialog jd_login;
@@ -963,6 +1029,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_principal;
     private javax.swing.JLabel lb_foto;
     private javax.swing.JPasswordField pf_contraseña;
+    private javax.swing.JTextArea ta_cuerpo;
+    private javax.swing.JTextField tf_asunto;
     private javax.swing.JTextField tf_contraseña_config;
     private javax.swing.JTextField tf_correo;
     private javax.swing.JTextField tf_correo_config;

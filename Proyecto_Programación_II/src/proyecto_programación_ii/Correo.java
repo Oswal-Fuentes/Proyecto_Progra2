@@ -6,6 +6,7 @@
 package proyecto_programación_ii;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.Icon;
 
@@ -18,6 +19,7 @@ public class Correo implements Serializable {
     private String nombre, correo, contraseña, telefono, genero;
     private Date fecha_nacimiento;
     private Icon foto;
+    private ArrayList<Correo_E> Correos_E = new ArrayList();
 
     private static final long SerialVersionUID = 777L;
 
@@ -32,6 +34,18 @@ public class Correo implements Serializable {
         this.genero = genero;
         this.fecha_nacimiento = fecha_nacimiento;
         this.foto = foto;
+    }
+
+    public ArrayList<Correo_E> getCorreos_E() {
+        return Correos_E;
+    }
+
+    public void setCorreos_E(ArrayList<Correo_E> Correos_E) {
+        this.Correos_E = Correos_E;
+    }
+
+    public void setCorreo_E(Correo_E c) {
+        Correos_E.add(c);
     }
 
     public String getNombre() {

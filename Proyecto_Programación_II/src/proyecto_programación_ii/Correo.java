@@ -19,7 +19,11 @@ public class Correo implements Serializable {
     private String nombre, correo, contraseña, telefono, genero;
     private Date fecha_nacimiento;
     private Icon foto;
-    private ArrayList<Correo_E> Correos_E = new ArrayList();
+    private ArrayList<Correo_E> recibidos = new ArrayList();
+    private ArrayList<Correo_E> enviados = new ArrayList();
+    private ArrayList<Correo_E> spam = new ArrayList();
+    private ArrayList<Correo_E> borradores = new ArrayList();
+    private ArrayList<Correo_E> papelera = new ArrayList();
 
     private static final long SerialVersionUID = 777L;
 
@@ -36,16 +40,52 @@ public class Correo implements Serializable {
         this.foto = foto;
     }
 
-    public ArrayList<Correo_E> getCorreos_E() {
-        return Correos_E;
+    public ArrayList<Correo_E> getRecibidos() {
+        return recibidos;
     }
 
-    public void setCorreos_E(ArrayList<Correo_E> Correos_E) {
-        this.Correos_E = Correos_E;
+    public void setRecibidos(ArrayList<Correo_E> recibidos) {
+        this.recibidos = recibidos;
+    }
+    
+    public void add_correoRecibido(Correo_E c) {
+        this.recibidos.add(c);
     }
 
-    public void setCorreo_E(Correo_E c) {
-        Correos_E.add(c);
+    public ArrayList<Correo_E> getEnviados() {
+        return enviados;
+    }
+
+    public void setEnviados(ArrayList<Correo_E> enviados) {
+        this.enviados = enviados;
+    }
+
+    public void add_correoEnviado(Correo_E c) {
+        this.enviados.add(c);
+    }
+
+    public ArrayList<Correo_E> getSpam() {
+        return spam;
+    }
+
+    public void setSpam(ArrayList<Correo_E> spam) {
+        this.spam = spam;
+    }
+
+    public ArrayList<Correo_E> getBorradores() {
+        return borradores;
+    }
+
+    public void setBorradores(ArrayList<Correo_E> borradores) {
+        this.borradores = borradores;
+    }
+
+    public ArrayList<Correo_E> getPapelera() {
+        return papelera;
+    }
+
+    public void setPapelera(ArrayList<Correo_E> papelera) {
+        this.papelera = papelera;
     }
 
     public String getNombre() {

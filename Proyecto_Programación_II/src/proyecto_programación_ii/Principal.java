@@ -9,7 +9,10 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -65,6 +68,7 @@ public class Principal extends javax.swing.JFrame {
         cb_correos = new javax.swing.JComboBox<>();
         jButton21 = new javax.swing.JButton();
         jButton22 = new javax.swing.JButton();
+        Modulo = new javax.swing.JButton();
         jd_redactar = new javax.swing.JDialog();
         jLabel10 = new javax.swing.JLabel();
         cb_contactos = new javax.swing.JComboBox<>();
@@ -72,9 +76,9 @@ public class Principal extends javax.swing.JFrame {
         tf_asunto = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         ta_cuerpo = new javax.swing.JTextArea();
-        jButton17 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        Boton_EnviarCorreo = new javax.swing.JButton();
+        Boton_ActualizarLista = new javax.swing.JButton();
+        Boton_GuardarenBorradores = new javax.swing.JButton();
         jd_crear_cuenta = new javax.swing.JDialog();
         jlb_foto = new javax.swing.JLabel();
         tf_nombre = new javax.swing.JTextField();
@@ -111,15 +115,68 @@ public class Principal extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
         tf_contraseña_config = new javax.swing.JTextField();
+        jd_chat = new javax.swing.JDialog();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ta_chat = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        tf_puerto = new javax.swing.JTextField();
+        tf_IP = new javax.swing.JTextField();
+        tf_chat = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jd_modulo = new javax.swing.JDialog();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jt_modulo = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jd_modificar_modulo = new javax.swing.JDialog();
+        jlb_foto_config1 = new javax.swing.JLabel();
+        tf_nombre_config1 = new javax.swing.JTextField();
+        tf_correo_config1 = new javax.swing.JTextField();
+        tf_telefono_config1 = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jButton29 = new javax.swing.JButton();
+        jLabel35 = new javax.swing.JLabel();
+        cb_genero_config1 = new javax.swing.JComboBox<>();
+        jButton30 = new javax.swing.JButton();
+        dc_fecha_nacimiento_config1 = new com.toedter.calendar.JDateChooser();
+        jLabel36 = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
+        tf_contraseña_config1 = new javax.swing.JTextField();
+        jd_reanudar_borrador = new javax.swing.JDialog();
+        jLabel12 = new javax.swing.JLabel();
+        cb_contactos1 = new javax.swing.JComboBox<>();
+        jLabel42 = new javax.swing.JLabel();
+        tf_asunto1 = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        ta_cuerpo1 = new javax.swing.JTextArea();
+        Boton_EnviarCorreo1 = new javax.swing.JButton();
+        Boton_ActualizarLista1 = new javax.swing.JButton();
+        Boton_GuardarenBorradores1 = new javax.swing.JButton();
+        Boton_Redactar = new javax.swing.JButton();
+        Boton_BandejaRecibidos = new javax.swing.JButton();
+        Boton_BandejaEnviados = new javax.swing.JButton();
+        Boton_BandejaSpam = new javax.swing.JButton();
+        Boton_BandejaPapelera = new javax.swing.JButton();
         jp_principal = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_table = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        ta_contenido = new javax.swing.JTextArea();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        Boton_CerrarSesion = new javax.swing.JButton();
+        Boton_BandejaBorradores = new javax.swing.JButton();
+        Boton_Configuraciones = new javax.swing.JButton();
+        Boton_BandejaPapelera1 = new javax.swing.JButton();
 
         jd_login.setTitle("Login");
 
@@ -165,6 +222,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        Modulo.setText("Modulo de cuentas");
+        Modulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ModuloMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_loginLayout = new javax.swing.GroupLayout(jd_login.getContentPane());
         jd_login.getContentPane().setLayout(jd_loginLayout);
         jd_loginLayout.setHorizontalGroup(
@@ -174,6 +238,8 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_loginLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton22)
+                        .addGap(46, 46, 46)
+                        .addComponent(Modulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -219,7 +285,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton20)
                     .addComponent(jLabel19)
-                    .addComponent(jButton22))
+                    .addComponent(jButton22)
+                    .addComponent(Modulo))
                 .addContainerGap())
         );
 
@@ -233,24 +300,24 @@ public class Principal extends javax.swing.JFrame {
         ta_cuerpo.setRows(5);
         jScrollPane1.setViewportView(ta_cuerpo);
 
-        jButton17.setText("Enviar");
-        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+        Boton_EnviarCorreo.setText("Enviar");
+        Boton_EnviarCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton17MouseClicked(evt);
+                Boton_EnviarCorreoMouseClicked(evt);
             }
         });
 
-        jButton11.setText("Actualizar lista");
-        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+        Boton_ActualizarLista.setText("Actualizar lista");
+        Boton_ActualizarLista.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton11MouseClicked(evt);
+                Boton_ActualizarListaMouseClicked(evt);
             }
         });
 
-        jButton12.setText("Adjuntar archivo");
-        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+        Boton_GuardarenBorradores.setText("Guardar en borradores");
+        Boton_GuardarenBorradores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton12MouseClicked(evt);
+                Boton_GuardarenBorradoresMouseClicked(evt);
             }
         });
 
@@ -264,10 +331,8 @@ public class Principal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE))
                     .addGroup(jd_redactarLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton17))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Boton_EnviarCorreo))
                     .addGroup(jd_redactarLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(jd_redactarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -278,7 +343,10 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(tf_asunto)
                             .addComponent(cb_contactos, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton11)))
+                        .addComponent(Boton_ActualizarLista))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_redactarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Boton_GuardarenBorradores)))
                 .addContainerGap())
         );
         jd_redactarLayout.setVerticalGroup(
@@ -288,15 +356,15 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jd_redactarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(cb_contactos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11))
+                    .addComponent(Boton_ActualizarLista))
                 .addGap(18, 18, 18)
                 .addGroup(jd_redactarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(tf_asunto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(jd_redactarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton17)
-                    .addComponent(jButton12))
+                .addGap(3, 3, 3)
+                .addComponent(Boton_GuardarenBorradores)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Boton_EnviarCorreo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
                 .addContainerGap())
@@ -549,40 +617,446 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        ta_chat.setColumns(20);
+        ta_chat.setRows(5);
+        jScrollPane3.setViewportView(ta_chat);
 
-        jButton1.setText("Redactar");
+        jButton1.setText("Conectar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
 
-        jButton2.setText("Recibidos");
+        jButton2.setText("Enviar");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
             }
         });
 
-        jButton3.setText("Enviados");
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(tf_chat, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(298, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(tf_IP, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_puerto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1))
+                .addGap(29, 29, 29))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(tf_IP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_puerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_chat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Chat", jPanel3);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 687, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 430, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Contactos", jPanel2);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 687, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 430, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Bandeja de entrada", jPanel1);
+
+        javax.swing.GroupLayout jd_chatLayout = new javax.swing.GroupLayout(jd_chat.getContentPane());
+        jd_chat.getContentPane().setLayout(jd_chatLayout);
+        jd_chatLayout.setHorizontalGroup(
+            jd_chatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+        jd_chatLayout.setVerticalGroup(
+            jd_chatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+
+        jt_modulo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jt_modulo);
+
+        jButton3.setText("Eliminar");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
             }
         });
 
-        jButton4.setText("SPAM");
+        jButton4.setText("Modificar");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
             }
         });
 
-        jButton5.setText("Papelera");
+        jButton5.setText("Obtener lista");
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton5MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_moduloLayout = new javax.swing.GroupLayout(jd_modulo.getContentPane());
+        jd_modulo.getContentPane().setLayout(jd_moduloLayout);
+        jd_moduloLayout.setHorizontalGroup(
+            jd_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_moduloLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4)
+                .addContainerGap())
+            .addGroup(jd_moduloLayout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addGap(86, 86, 86)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(143, Short.MAX_VALUE))
+        );
+        jd_moduloLayout.setVerticalGroup(
+            jd_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_moduloLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(jd_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addGap(24, 24, 24))
+        );
+
+        jd_modificar_modulo.setTitle("Configuraciones");
+
+        jlb_foto_config1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel30.setText("Nombre");
+
+        jLabel31.setText("Correo");
+
+        jLabel32.setText("Telefono");
+
+        jLabel33.setText("Fecha de nacimiento");
+
+        jLabel34.setText("Genero");
+
+        jButton29.setText("Seleccionar");
+        jButton29.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton29MouseClicked(evt);
+            }
+        });
+
+        jLabel35.setText("Foto");
+
+        cb_genero_config1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+
+        jButton30.setText("Guardar cambios");
+        jButton30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton30MouseClicked(evt);
+            }
+        });
+
+        jLabel36.setText("Contraseña");
+
+        jButton11.setText("Eliminar correo");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_modificar_moduloLayout = new javax.swing.GroupLayout(jd_modificar_modulo.getContentPane());
+        jd_modificar_modulo.getContentPane().setLayout(jd_modificar_moduloLayout);
+        jd_modificar_moduloLayout.setHorizontalGroup(
+            jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificar_moduloLayout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_modificar_moduloLayout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addGroup(jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_modificar_moduloLayout.createSequentialGroup()
+                        .addGroup(jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_correo_config1)
+                            .addComponent(tf_telefono_config1)
+                            .addComponent(dc_fecha_nacimiento_config1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(cb_genero_config1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_contraseña_config1))
+                        .addGap(110, 110, 110))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_modificar_moduloLayout.createSequentialGroup()
+                        .addComponent(jLabel30)
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_modificar_moduloLayout.createSequentialGroup()
+                                .addComponent(jlb_foto_config1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jd_modificar_moduloLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton29))
+                                    .addGroup(jd_modificar_moduloLayout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(jLabel35))))
+                            .addComponent(tf_nombre_config1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(95, 95, 95))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_modificar_moduloLayout.createSequentialGroup()
+                        .addComponent(jButton11)
+                        .addContainerGap())))
+        );
+        jd_modificar_moduloLayout.setVerticalGroup(
+            jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificar_moduloLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jlb_foto_config1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jd_modificar_moduloLayout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton29)))
+                .addGap(41, 41, 41)
+                .addGroup(jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_nombre_config1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addGap(18, 18, 18)
+                .addGroup(jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel31)
+                    .addComponent(tf_correo_config1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36)
+                    .addComponent(tf_contraseña_config1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(tf_telefono_config1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel33)
+                    .addComponent(dc_fecha_nacimiento_config1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_modificar_moduloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(cb_genero_config1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jButton11)
+                .addContainerGap())
+        );
+
+        jd_reanudar_borrador.setTitle("Redactar correo");
+
+        jLabel12.setText("Para");
+
+        jLabel42.setText("Asunto");
+
+        ta_cuerpo1.setColumns(20);
+        ta_cuerpo1.setRows(5);
+        jScrollPane6.setViewportView(ta_cuerpo1);
+
+        Boton_EnviarCorreo1.setText("Enviar");
+        Boton_EnviarCorreo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_EnviarCorreo1MouseClicked(evt);
+            }
+        });
+
+        Boton_ActualizarLista1.setText("Actualizar lista");
+        Boton_ActualizarLista1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_ActualizarLista1MouseClicked(evt);
+            }
+        });
+
+        Boton_GuardarenBorradores1.setText("Guardar en borradores");
+        Boton_GuardarenBorradores1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_GuardarenBorradores1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_reanudar_borradorLayout = new javax.swing.GroupLayout(jd_reanudar_borrador.getContentPane());
+        jd_reanudar_borrador.getContentPane().setLayout(jd_reanudar_borradorLayout);
+        jd_reanudar_borradorLayout.setHorizontalGroup(
+            jd_reanudar_borradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_reanudar_borradorLayout.createSequentialGroup()
+                .addGroup(jd_reanudar_borradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_reanudar_borradorLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE))
+                    .addGroup(jd_reanudar_borradorLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Boton_EnviarCorreo1))
+                    .addGroup(jd_reanudar_borradorLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jd_reanudar_borradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel42)
+                            .addComponent(jLabel12))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_reanudar_borradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_asunto1)
+                            .addComponent(cb_contactos1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Boton_ActualizarLista1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_reanudar_borradorLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Boton_GuardarenBorradores1)))
+                .addContainerGap())
+        );
+        jd_reanudar_borradorLayout.setVerticalGroup(
+            jd_reanudar_borradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_reanudar_borradorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_reanudar_borradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(cb_contactos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Boton_ActualizarLista1))
+                .addGap(18, 18, 18)
+                .addGroup(jd_reanudar_borradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(tf_asunto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addComponent(Boton_GuardarenBorradores1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Boton_EnviarCorreo1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Boton_Redactar.setText("Redactar");
+        Boton_Redactar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_RedactarMouseClicked(evt);
+            }
+        });
+
+        Boton_BandejaRecibidos.setText("Recibidos");
+        Boton_BandejaRecibidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_BandejaRecibidosMouseClicked(evt);
+            }
+        });
+
+        Boton_BandejaEnviados.setText("Enviados");
+        Boton_BandejaEnviados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_BandejaEnviadosMouseClicked(evt);
+            }
+        });
+
+        Boton_BandejaSpam.setText("SPAM");
+        Boton_BandejaSpam.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_BandejaSpamMouseClicked(evt);
+            }
+        });
+
+        Boton_BandejaPapelera.setText("Papelera");
+        Boton_BandejaPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_BandejaPapeleraMouseClicked(evt);
+            }
+        });
+
+        jt_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jt_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jt_table);
+
+        ta_contenido.setColumns(20);
+        ta_contenido.setRows(5);
+        jScrollPane5.setViewportView(ta_contenido);
+
+        jButton7.setText("Ver contenido");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Reanudar Borrador");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
             }
         });
 
@@ -590,31 +1064,57 @@ public class Principal extends javax.swing.JFrame {
         jp_principal.setLayout(jp_principalLayout);
         jp_principalLayout.setHorizontalGroup(
             jp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 684, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+            .addGroup(jp_principalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6))
         );
         jp_principalLayout.setVerticalGroup(
             jp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jp_principalLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_principalLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_principalLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addComponent(jButton8)
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton7)
+                        .addGap(51, 51, 51))))
         );
 
-        jButton7.setText("Cerrar sesión");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        Boton_CerrarSesion.setText("Cerrar sesión");
+        Boton_CerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                Boton_CerrarSesionActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Borradores");
-        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+        Boton_BandejaBorradores.setText("Borradores");
+        Boton_BandejaBorradores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton8MouseClicked(evt);
+                Boton_BandejaBorradoresMouseClicked(evt);
             }
         });
 
-        jButton9.setText("Configuraciones");
-        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+        Boton_Configuraciones.setText("Configuraciones");
+        Boton_Configuraciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton9MouseClicked(evt);
+                Boton_ConfiguracionesMouseClicked(evt);
+            }
+        });
+
+        Boton_BandejaPapelera1.setText("Chat");
+        Boton_BandejaPapelera1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_BandejaPapelera1MouseClicked(evt);
             }
         });
 
@@ -625,14 +1125,15 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Boton_BandejaRecibidos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Boton_BandejaEnviados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Boton_BandejaSpam, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Boton_BandejaBorradores, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Boton_BandejaPapelera, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Boton_Configuraciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Boton_Redactar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Boton_CerrarSesion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Boton_BandejaPapelera1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jp_principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -644,21 +1145,23 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jp_principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Boton_Redactar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Boton_BandejaPapelera1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Boton_BandejaRecibidos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Boton_BandejaEnviados, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Boton_BandejaSpam, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Boton_BandejaBorradores, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Boton_BandejaPapelera, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Boton_Configuraciones, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Boton_CerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -676,75 +1179,88 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton6MouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        panel_recibidos p1 = new panel_recibidos();
+    private void Boton_BandejaRecibidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_BandejaRecibidosMouseClicked
+        b = 1;
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        jt_table.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Asunto", "De"
+                }
+        ));
+        for (Correo_E t : ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getRecibidos()) {
+            Object row[] = {t.getAsunto(), t.getRemitente()};
+            DefaultTableModel m = (DefaultTableModel) jt_table.getModel();
+            m.addRow(row);
+            jt_table.setModel(m);
+        }
+        /*
+    panel_recibidos p1 = new panel_recibidos();
         p1.setSize(Width, Height);
         p1.setLocation(0, 0);
         jp_principal.removeAll();
         jp_principal.add(p1, BorderLayout.CENTER);
         jp_principal.revalidate();
         jp_principal.repaint();
+         */
+    }//GEN-LAST:event_Boton_BandejaRecibidosMouseClicked
+
+    private void Boton_BandejaEnviadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_BandejaEnviadosMouseClicked
+        b = 2;
         adminCorreo ap = new adminCorreo("./correos.cbm");
         ap.cargarArchivo();
-        panel_recibidos pr = new panel_recibidos();
-        pr.traerTable().setModel(new javax.swing.table.DefaultTableModel(
+        jt_table.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "Clase", "UV"
+                    "Asunto", "Para"
                 }
         ));
-        int pos = 0;
-        for (Correo_E t : ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getCorreos_E()) {
-            if (ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getCorreos_E().get(pos).getBandeja().equals("Recibidos")) {
-                Object row[] = {t.getAsunto(), t.getRemitente()};
-                DefaultTableModel m = (DefaultTableModel) pr.traerTable().getModel();
-                m.addRow(row);
-                pr.traerTable().setModel(m);
-            }
+        for (Correo_E t : ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getEnviados()) {
+            Object row[] = {t.getAsunto(), t.getDestinatario()};
+            DefaultTableModel m = (DefaultTableModel) jt_table.getModel();
+            m.addRow(row);
+            jt_table.setModel(m);
         }
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_Boton_BandejaEnviadosMouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        panel_enviados p2 = new panel_enviados();
-        p2.setSize(Width, Height);
-        p2.setLocation(0, 0);
-        jp_principal.removeAll();
-        jp_principal.add(p2, BorderLayout.CENTER);
-        jp_principal.revalidate();
-        jp_principal.repaint();
-    }//GEN-LAST:event_jButton3MouseClicked
+    private void Boton_BandejaSpamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_BandejaSpamMouseClicked
+        b = 3;
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        jt_table.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Asunto", "De"
+                }
+        ));
+        for (Correo_E t : ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getSpam()) {
+            Object row[] = {t.getAsunto(), t.getRemitente()};
+            DefaultTableModel m = (DefaultTableModel) jt_table.getModel();
+            m.addRow(row);
+            jt_table.setModel(m);
+        }
+    }//GEN-LAST:event_Boton_BandejaSpamMouseClicked
 
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        panel_spam p3 = new panel_spam();
-        p3.setSize(Width, Height);
-        p3.setLocation(0, 0);
-        jp_principal.removeAll();
-        jp_principal.add(p3, BorderLayout.CENTER);
-        jp_principal.revalidate();
-        jp_principal.repaint();
-    }//GEN-LAST:event_jButton4MouseClicked
+    private void Boton_BandejaPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_BandejaPapeleraMouseClicked
+        b = 5;
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        jt_table.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Asunto", "De"
+                }
+        ));
+        for (Correo_E t : ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getEnviados()) {
+            Object row[] = {t.getAsunto(), t.getRemitente()};
+            DefaultTableModel m = (DefaultTableModel) jt_table.getModel();
+            m.addRow(row);
+            jt_table.setModel(m);
+        }
+    }//GEN-LAST:event_Boton_BandejaPapeleraMouseClicked
 
-    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
-        panel_borradores p4 = new panel_borradores();
-        p4.setSize(Width, Height);
-        p4.setLocation(0, 0);
-        jp_principal.removeAll();
-        jp_principal.add(p4, BorderLayout.CENTER);
-        jp_principal.revalidate();
-        jp_principal.repaint();
-    }//GEN-LAST:event_jButton8MouseClicked
-
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        panel_papelera p5 = new panel_papelera();
-        p5.setSize(Width, Height);
-        p5.setLocation(0, 0);
-        jp_principal.removeAll();
-        jp_principal.add(p5, BorderLayout.CENTER);
-        jp_principal.revalidate();
-        jp_principal.repaint();
-    }//GEN-LAST:event_jButton5MouseClicked
-
-    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+    private void Boton_ConfiguracionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_ConfiguracionesMouseClicked
         int pos = cb_correos.getSelectedIndex();
         adminCorreo ap = new adminCorreo("./correos.cbm");
         ap.cargarArchivo();
@@ -760,20 +1276,15 @@ public class Principal extends javax.swing.JFrame {
         jd_config.setLocationRelativeTo(this);//Ubicar la ventana en una posicion
         jd_config.setResizable(false);//No se puede modificar el tamaño
         jd_config.setVisible(true);
-    }//GEN-LAST:event_jButton9MouseClicked
+    }//GEN-LAST:event_Boton_ConfiguracionesMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        jd_redactar.setModal(true);//Bloquear otras ventanas
+    private void Boton_RedactarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_RedactarMouseClicked
+        jd_redactar.setModal(true);//Bloquear otras ventana
         jd_redactar.pack();//Acoplar el tamaño a la ventana a los elementos que incluye
         jd_redactar.setLocationRelativeTo(this);//Ubicar la ventana en una posicion
         jd_redactar.setResizable(false);//No se puede modificar el tamaño
         jd_redactar.setVisible(true);
-        adminCorreo ap = new adminCorreo("./correos.cbm");
-        ap.cargarArchivo();
-        Correo_E c = new Correo_E(tf_asunto.getText(), ta_cuerpo.getText(), "Borradores", null, null);
-        ap.getListaCorreos().get(cb_correos.getSelectedIndex()).setCorreo_E(c);
-        ap.escribirArchivo();
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_Boton_RedactarMouseClicked
 
     private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
         jd_crear_cuenta.setModal(true);//Bloquear otras ventanas
@@ -830,13 +1341,13 @@ public class Principal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton22MouseClicked
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        if (evt.getSource() == jButton7) {
+    private void Boton_CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_CerrarSesionActionPerformed
+        if (evt.getSource() == Boton_CerrarSesion) {
             dispose();
             Principal restart = new Principal();
             restart.setVisible(true);
         }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_Boton_CerrarSesionActionPerformed
 
     private void jButton27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton27MouseClicked
         JFileChooser fc = new JFileChooser();
@@ -884,50 +1395,286 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton10MouseClicked
 
-    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+    private void Boton_ActualizarListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_ActualizarListaMouseClicked
         adminCorreo ap = new adminCorreo("./correos.cbm");
         ap.cargarArchivo();
         DefaultComboBoxModel modelo = new DefaultComboBoxModel(ap.getListaCorreos().toArray());
         cb_contactos.setModel(modelo);
-    }//GEN-LAST:event_jButton11MouseClicked
+    }//GEN-LAST:event_Boton_ActualizarListaMouseClicked
 
-    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
-        JFileChooser fc = new JFileChooser();
-        int op = fc.showOpenDialog(this);
-        if (op == JFileChooser.APPROVE_OPTION) {
-            adminCorreo ap = new adminCorreo("./correos.cbm");
-            ap.cargarArchivo();
-            int tam = ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getCorreos_E().size() - 1;
-            ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getCorreos_E().get(tam).setArchivo(fc.getSelectedFile());
-            JOptionPane.showMessageDialog(this, "Se adjunto el archivo exitosamente");
-        }
-    }//GEN-LAST:event_jButton12MouseClicked
-
-    private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
-        /*
+    private void Boton_EnviarCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_EnviarCorreoMouseClicked
         adminCorreo ap = new adminCorreo("./correos.cbm");
         ap.cargarArchivo();
-        Correo_E c = new Correo_E(tf_asunto.getText(), ta_cuerpo.getText(), "Borradores", ap.getListaCorreos().get(cb_contactos.getSelectedIndex()));
-        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).setCorreo_E(c);
-        ap.escribirArchivo();
-         */
-        adminCorreo ap = new adminCorreo("./correos.cbm");
-        ap.cargarArchivo();
-        int tam = ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).getCorreos_E().size() - 1;
-        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).getCorreos_E().get(tam).setAsunto(tf_asunto.getText());
-        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).getCorreos_E().get(tam).setBandeja("Enviados");
-        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).getCorreos_E().get(tam).setCuerpo(ta_cuerpo.getText());
-        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).getCorreos_E().get(tam).setDestinatario((Correo) cb_contactos.getSelectedItem());
-        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).getCorreos_E().get(tam).setRemitente((Correo) cb_correos.getSelectedItem());
+        Correo_E correo;
+        correo = new Correo_E(tf_asunto.getText(), ta_cuerpo.getText(), (Correo) cb_contactos.getSelectedItem(),
+                (Correo) cb_correos.getSelectedItem());
+        ap.getListaCorreos().get(cb_correos.getSelectedIndex()).add_correoEnviado(correo);
         //asignar en bandeja de entrada de el destinatario
-        Correo_E c = new Correo_E(tf_asunto.getText(), ta_cuerpo.getText(), "Recibidos", ap.getListaCorreos().
-                get(cb_contactos.getSelectedIndex()), ap.getListaCorreos().get(cb_correos.getSelectedIndex()));
-        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).setCorreo_E(c);
+        ap.getListaCorreos().get(cb_contactos.getSelectedIndex()).add_correoRecibido(correo);
+        ap.escribirArchivo();
+        jd_redactar.dispose();
         JOptionPane.showMessageDialog(this, "Se ha enviado el correo");
+        cb_contactos.setSelectedIndex(0);
         tf_asunto.setText("");
         ta_cuerpo.setText("");
-        cb_contactos.setSelectedIndex(0);
-    }//GEN-LAST:event_jButton17MouseClicked
+    }//GEN-LAST:event_Boton_EnviarCorreoMouseClicked
+
+    private void Boton_GuardarenBorradoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_GuardarenBorradoresMouseClicked
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        Correo_E c;
+        c = new Correo_E(tf_asunto.getText(), ta_cuerpo.getText(), (Correo) cb_contactos.getSelectedItem(),
+                (Correo) cb_correos.getSelectedItem());
+        ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getBorradores().add(c);
+        ap.escribirArchivo();
+        jd_redactar.dispose();
+        JOptionPane.showMessageDialog(this, "Se ha guardado el correo en borradores");
+    }//GEN-LAST:event_Boton_GuardarenBorradoresMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        int p = Integer.parseInt(tf_puerto.getText());
+        try {
+            conex = new admin_Conexion(ta_chat, tf_chat, tf_IP.getText(), p);
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Thread thread = new Thread(conex);
+        thread.start();
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        for (Correo t : ap.getListaCorreos()) {
+            conex.salida.println(ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getNombre() + ":" + tf_chat.getText());
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void Boton_BandejaPapelera1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_BandejaPapelera1MouseClicked
+        jd_chat.setModal(true);//Bloquear otras ventanas
+        jd_chat.pack();//Acoplar el tamaño a la ventana a los elementos que incluye
+        jd_chat.setLocationRelativeTo(this);//Ubicar la ventana en una posicion
+        jd_chat.setResizable(false);//No se puede modificar el tamaño
+        jd_chat.setVisible(true);
+    }//GEN-LAST:event_Boton_BandejaPapelera1MouseClicked
+
+    private void Boton_BandejaBorradoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_BandejaBorradoresMouseClicked
+        b = 4;
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        jt_table.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Asunto", "Para"
+                }
+        ));
+        for (Correo_E t : ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getBorradores()) {
+            Object row[] = {t.getAsunto(), t.getDestinatario()};
+            DefaultTableModel m = (DefaultTableModel) jt_table.getModel();
+            m.addRow(row);
+            jt_table.setModel(m);
+        }
+    }//GEN-LAST:event_Boton_BandejaBorradoresMouseClicked
+
+    private void jt_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_tableMouseClicked
+
+    }//GEN-LAST:event_jt_tableMouseClicked
+
+    private void ModuloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModuloMouseClicked
+        jd_modulo.setModal(true);//Bloquear otras ventanas
+        jd_modulo.pack();//Acoplar el tamaño a la ventana a los elementos que incluye
+        jd_modulo.setLocationRelativeTo(this);//Ubicar la ventana en una posicion
+        jd_modulo.setResizable(false);//No se puede modificar el tamaño
+        jd_modulo.setVisible(true);
+    }//GEN-LAST:event_ModuloMouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        jt_modulo.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Nombre", "Correo", "Contraseña", "Telefono", "Genero"
+                }
+        ));
+        for (Correo t : ap.getListaCorreos()) {
+            //nombre, correo, contraseña, telefono, genero
+            Object row[] = {t.getNombre(), t.getCorreo(), t.getContraseña(), t.getTelefono(), t.getGenero()};
+            DefaultTableModel m = (DefaultTableModel) jt_modulo.getModel();
+            m.addRow(row);
+            jt_modulo.setModel(m);
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+//Modificar
+        int pos = jt_modulo.getSelectedRow();
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        jlb_foto_config1.setIcon(ap.getListaCorreos().get(pos).getFoto());
+        tf_nombre_config1.setText(ap.getListaCorreos().get(pos).getNombre());
+        tf_correo_config1.setText(ap.getListaCorreos().get(pos).getCorreo());
+        tf_contraseña_config1.setText(ap.getListaCorreos().get(pos).getContraseña());
+        tf_telefono_config1.setText(ap.getListaCorreos().get(pos).getTelefono());
+        dc_fecha_nacimiento_config1.setDate(ap.getListaCorreos().get(pos).getFecha_nacimiento());
+        cb_genero_config1.setSelectedItem(ap.getListaCorreos().get(pos).getGenero());
+        jd_modificar_modulo.setModal(true);//Bloquear otras ventanas
+        jd_modificar_modulo.pack();//Acoplar el tamaño a la ventana a los elementos que incluye
+        jd_modificar_modulo.setLocationRelativeTo(this);//Ubicar la ventana en una posicion
+        jd_modificar_modulo.setResizable(false);//No se puede modificar el tamaño
+        jd_modificar_modulo.setVisible(true);
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        String resp = JOptionPane.showInputDialog("¿Esta seguro que desea eliminar su cuenta de correo electronico? [s/n]");
+        if (resp.equals("s") || resp.equals("S")) {
+            int pos = jt_modulo.getSelectedRow();
+            adminCorreo ap = new adminCorreo("./correos.cbm");
+            ap.cargarArchivo();
+            ap.getListaCorreos().remove(pos);
+            ap.escribirArchivo();
+            JOptionPane.showMessageDialog(this, "Se elimino el correo");
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton29MouseClicked
+        JFileChooser fc = new JFileChooser();
+        FileFilter filtro = new FileNameExtensionFilter("Imagenes", "png", "jpg", "jpeg", "gif");
+        fc.setFileFilter(filtro);
+        File archivo;
+        int op = fc.showOpenDialog(this);
+        if (op == JFileChooser.APPROVE_OPTION) {
+            archivo = fc.getSelectedFile();
+            Image img = Toolkit.getDefaultToolkit().createImage(archivo.getPath()).getScaledInstance(100, 100, 0);
+            this.jlb_foto_config1.setIcon(new ImageIcon(img));
+        }
+    }//GEN-LAST:event_jButton29MouseClicked
+
+    private void jButton30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton30MouseClicked
+        int pos = jt_modulo.getSelectedRow();
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        ap.getListaCorreos().get(pos).setFoto(jlb_foto_config1.getIcon());
+        ap.getListaCorreos().get(pos).setNombre(tf_nombre_config1.getText());
+        ap.getListaCorreos().get(pos).setCorreo(tf_correo_config1.getText());
+        ap.getListaCorreos().get(pos).setContraseña(tf_contraseña_config1.getText());
+        ap.getListaCorreos().get(pos).setTelefono(tf_telefono_config1.getText());
+        ap.getListaCorreos().get(pos).setFecha_nacimiento(dc_fecha_nacimiento_config1.getDate());
+        ap.getListaCorreos().get(pos).setGenero((String) cb_genero_config1.getSelectedItem());
+        ap.escribirArchivo();
+        jd_modificar_modulo.dispose();
+        JOptionPane.showMessageDialog(this, "Se ha modificado la cuenta exitosamente");
+    }//GEN-LAST:event_jButton30MouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        int seleccion = jt_table.getSelectedRow();
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        if (b == 1) {
+            for (Correo_E temp : ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getRecibidos()) {
+                try {
+                    ta_contenido.setText(ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getRecibidos().get(seleccion).getCuerpo());
+                } catch (Exception e) {
+
+                }
+            }
+        }
+        if (b == 2) {
+            for (Correo_E temp : ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getEnviados()) {
+                try {
+                    ta_contenido.setText(ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getEnviados().get(seleccion).getCuerpo());
+                } catch (Exception e) {
+
+                }
+            }
+        }
+        if (b == 3) {
+            for (Correo_E temp : ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getSpam()) {
+                try {
+                    ta_contenido.setText(ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getSpam().get(seleccion).getCuerpo());
+                } catch (Exception e) {
+
+                }
+            }
+        }
+        if (b == 4) {
+            for (Correo_E temp : ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getBorradores()) {
+                try {
+                    ta_contenido.setText(ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getBorradores().get(seleccion).getCuerpo());
+                } catch (Exception e) {
+
+                }
+            }
+        }
+        if (b == 5) {
+            for (Correo_E temp : ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getPapelera()) {
+                try {
+                    ta_contenido.setText(ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getPapelera().get(seleccion).getCuerpo());
+                } catch (Exception e) {
+
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        int seleccion = jt_table.getSelectedRow();
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        if (b == 4) {
+            tf_asunto1.setText(ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getBorradores()
+                    .get(seleccion).getAsunto());
+            ta_cuerpo1.setText(ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getBorradores()
+                    .get(seleccion).getCuerpo());
+            ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getBorradores().remove(seleccion);
+        }
+        ap.escribirArchivo();
+        jd_reanudar_borrador.setModal(true);//Bloquear otras ventanas
+        jd_reanudar_borrador.pack();//Acoplar el tamaño a la ventana a los elementos que incluye
+        jd_reanudar_borrador.setLocationRelativeTo(this);//Ubicar la ventana en una posicion
+        jd_reanudar_borrador.setResizable(false);//No se puede modificar el tamaño
+        jd_reanudar_borrador.setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void Boton_EnviarCorreo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_EnviarCorreo1MouseClicked
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        Correo_E correo;
+        correo = new Correo_E(tf_asunto1.getText(), ta_cuerpo1.getText(), (Correo) cb_contactos1.getSelectedItem(),
+                (Correo) cb_correos.getSelectedItem());
+        ap.getListaCorreos().get(cb_correos.getSelectedIndex()).add_correoEnviado(correo);
+        //asignar en bandeja de entrada de el destinatario
+        ap.getListaCorreos().get(cb_contactos1.getSelectedIndex()).add_correoRecibido(correo);
+        ap.escribirArchivo();
+        jd_reanudar_borrador.dispose();
+        JOptionPane.showMessageDialog(this, "Se ha enviado el correo");
+        cb_contactos1.setSelectedIndex(0);
+        tf_asunto1.setText("");
+        ta_cuerpo1.setText("");
+    }//GEN-LAST:event_Boton_EnviarCorreo1MouseClicked
+
+    private void Boton_ActualizarLista1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_ActualizarLista1MouseClicked
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(ap.getListaCorreos().toArray());
+        cb_contactos1.setModel(modelo);
+    }//GEN-LAST:event_Boton_ActualizarLista1MouseClicked
+
+    private void Boton_GuardarenBorradores1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_GuardarenBorradores1MouseClicked
+        adminCorreo ap = new adminCorreo("./correos.cbm");
+        ap.cargarArchivo();
+        Correo_E c;
+        c = new Correo_E(tf_asunto1.getText(), ta_cuerpo1.getText(), (Correo) cb_contactos1.getSelectedItem(),
+                (Correo) cb_correos.getSelectedItem());
+        ap.getListaCorreos().get(cb_correos.getSelectedIndex()).getBorradores().add(c);
+        ap.escribirArchivo();
+        jd_reanudar_borrador.dispose();
+        JOptionPane.showMessageDialog(this, "Se ha guardado el correo en borradores");
+    }//GEN-LAST:event_Boton_GuardarenBorradores1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -973,17 +1720,34 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Boton_ActualizarLista;
+    private javax.swing.JButton Boton_ActualizarLista1;
+    private javax.swing.JButton Boton_BandejaBorradores;
+    private javax.swing.JButton Boton_BandejaEnviados;
+    private javax.swing.JButton Boton_BandejaPapelera;
+    private javax.swing.JButton Boton_BandejaPapelera1;
+    private javax.swing.JButton Boton_BandejaRecibidos;
+    private javax.swing.JButton Boton_BandejaSpam;
+    private javax.swing.JButton Boton_CerrarSesion;
+    private javax.swing.JButton Boton_Configuraciones;
+    private javax.swing.JButton Boton_EnviarCorreo;
+    private javax.swing.JButton Boton_EnviarCorreo1;
+    private javax.swing.JButton Boton_GuardarenBorradores;
+    private javax.swing.JButton Boton_GuardarenBorradores1;
+    private javax.swing.JButton Boton_Redactar;
+    private javax.swing.JButton Modulo;
     private javax.swing.JComboBox<String> cb_contactos;
+    private javax.swing.JComboBox<String> cb_contactos1;
     private javax.swing.JComboBox<String> cb_correos;
     private javax.swing.JComboBox<String> cb_genero;
     private javax.swing.JComboBox<String> cb_genero_config;
+    private javax.swing.JComboBox<String> cb_genero_config1;
     private com.toedter.calendar.JDateChooser dc_fecha_nacimiento;
     private com.toedter.calendar.JDateChooser dc_fecha_nacimiento_config;
+    private com.toedter.calendar.JDateChooser dc_fecha_nacimiento_config1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
@@ -992,16 +1756,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1019,26 +1785,65 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JDialog jd_chat;
     private javax.swing.JDialog jd_config;
     private javax.swing.JDialog jd_crear_cuenta;
     private javax.swing.JDialog jd_login;
+    private javax.swing.JDialog jd_modificar_modulo;
+    private javax.swing.JDialog jd_modulo;
+    private javax.swing.JDialog jd_reanudar_borrador;
     private javax.swing.JDialog jd_redactar;
     private javax.swing.JLabel jlb_foto;
     private javax.swing.JLabel jlb_foto_config;
+    private javax.swing.JLabel jlb_foto_config1;
     private javax.swing.JPanel jp_principal;
+    private javax.swing.JTable jt_modulo;
+    private javax.swing.JTable jt_table;
     private javax.swing.JLabel lb_foto;
     private javax.swing.JPasswordField pf_contraseña;
+    private javax.swing.JTextArea ta_chat;
+    private javax.swing.JTextArea ta_contenido;
     private javax.swing.JTextArea ta_cuerpo;
+    private javax.swing.JTextArea ta_cuerpo1;
+    private javax.swing.JTextField tf_IP;
     private javax.swing.JTextField tf_asunto;
+    private javax.swing.JTextField tf_asunto1;
+    private javax.swing.JTextField tf_chat;
     private javax.swing.JTextField tf_contraseña_config;
+    private javax.swing.JTextField tf_contraseña_config1;
     private javax.swing.JTextField tf_correo;
     private javax.swing.JTextField tf_correo_config;
+    private javax.swing.JTextField tf_correo_config1;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_nombre_config;
+    private javax.swing.JTextField tf_nombre_config1;
     private javax.swing.JPasswordField tf_pass;
+    private javax.swing.JTextField tf_puerto;
     private javax.swing.JTextField tf_telefono;
     private javax.swing.JTextField tf_telefono_config;
+    private javax.swing.JTextField tf_telefono_config1;
     // End of variables declaration//GEN-END:variables
     int Height = 0, Width = 0;
+    //ArrayList<Correo_E> correos_elec = new ArrayList();
+    ArrayList<Correo_E> correos = new ArrayList();
+    admin_Conexion conex;
+    int b = 0;
 }
